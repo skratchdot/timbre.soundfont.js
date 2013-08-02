@@ -13,7 +13,7 @@
 		// config
 		maxLoadTime = 1000,
 		// settings
-		urlTemplate = 'https://free-midi.googlecode.com/git/channel/0/instrument/{instrument}/{note}.js?_callback=soundfont',
+		urlTemplate = 'https://free-midi.googlecode.com/git/channel/0/instrument/{instrument}/{note}.js?_callback=soundfont_0_{instrument}_{note}',
 		name = 'gm',
 		channel = 0,
 		instrument = 0,
