@@ -58,7 +58,7 @@
 		ensureNote(note);
 		audio = audioCache[name][channel][instrument][length][note];
 		if (audio.sample !== null) {
-			callback(audio.sample, true);
+			callback(audio, true);
 		} else if (audio.isLoading && (new Date()).getTime() - audio.loadTime < maxLoadTime) {
 			audio.callbacks.push(callback);
 		} else {
@@ -77,19 +77,19 @@
 					for (i = 0; i < audio.callbacks.length; i++) {
 						cb = audio.callbacks[i];
 						if (typeof cb === 'function') {
-							cb(audio.sample, false);
+							cb(audio, false);
 						}
 					}
 					audio.callbacks = [];
 					audio.isLoading = false;
-					callback(audio.sample, false);
+					callback(audio, false);
 					// execute global onLoad callback
-					soundfont.onLoad(audio.sample, note);
+					soundfont.onLoad(audio, note);
 				}, function () {
 					// execute global onError 
 					throw new Error('T("audio").loadthis() error.');
 				}).on('ended', function () {
-					this.pause();
+					audio.sample.pause();
 				});
 			} catch (e) {
 				audio.isLoading = false;
@@ -140,9 +140,9 @@
 	soundfont.play = function (note, playOnLoad, options) {
 		playOnLoad = (playOnLoad === false) ? false : true;
 		options = (typeof options === 'object') ? options : {};
-		getSample(note, function (sample, isImmediate) {
+		getSample(note, function (audio, isImmediate) {
 			if (isImmediate || playOnLoad) {
-				sample.set(options).play().bang();
+				audio.sample.set(options).play().bang();
 			}
 		});
 	};
