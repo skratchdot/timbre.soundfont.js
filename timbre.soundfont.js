@@ -137,11 +137,12 @@
 		}
 	};
 
-	soundfont.play = function (note, playOnLoad) {
+	soundfont.play = function (note, playOnLoad, options) {
 		playOnLoad = (playOnLoad === false) ? false : true;
+		options = (typeof options === 'object') ? options : {};
 		getSample(note, function (sample, isImmediate) {
 			if (isImmediate || playOnLoad) {
-				sample.play().bang();
+				sample.set(options).play().bang();
 			}
 		});
 	};
