@@ -16,6 +16,9 @@ module.exports = function(grunt) {
 			}
 		},
 		uglify: {
+			options: {
+				preserveComments: 'some'
+			},
 			dist: {
 				files: {
 					'timbre.soundfont.min.js': ['timbre.soundfont.js']
