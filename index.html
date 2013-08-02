@@ -85,7 +85,7 @@
 	<script src="timbre.soundfont.js"></script>
 	<script>
 		$(document).ready(function () {
-			var i, j, html, instrument, note = 0, $option;
+			var i, j, html, instrument, note = 0, $option, isClicking = false;
 
 			// populate notes
 			for (i = -1; i < 10; i++) {
@@ -130,10 +130,17 @@
 				timbre.soundfont.preload(notes);
 			});
 
-			// listen to button clicks
-			$('button').on('click', function () {
-				var note = parseInt($(this).text(), 10);
-				timbre.soundfont.play(note);
+			// listen to button clicks/hovers
+			$('button').on('mouseenter', function () {
+				if (isClicking) {
+					timbre.soundfont.play(parseInt($(this).text(), 10));
+				}
+			}).on('mousedown', function () {
+				isClicking = true;
+				timbre.soundfont.play(parseInt($(this).text(), 10));
+			});
+			$('body').on('mouseup', function () {
+				isClicking = false;
 			});
 		});
 	</script>
