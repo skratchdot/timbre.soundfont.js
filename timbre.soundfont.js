@@ -64,11 +64,11 @@
 		} else {
 			audio.isLoading = true;
 			try {
-				url = urlTemplate.replace('{name}', name, 'gi')
-						.replace('{channel}', channel, 'gi')
-						.replace('{instrument}', instrument, 'gi')
-						.replace('{length}', length, 'gi')
-						.replace('{note}', note, 'gi');
+				url = urlTemplate.replace(/\{name\}/gi, name)
+						.replace(/\{channel\}/gi, channel)
+						.replace(/\{instrument\}/gi, instrument)
+						.replace(/\{length\}/gi, length)
+						.replace(/\{note\}/gi, note);
 
 				timbre('audio' + (jsonp ? '.jsonp' : '')).loadthis(url, function () {
 					var i, cb;
