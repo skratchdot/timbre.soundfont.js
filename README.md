@@ -26,7 +26,7 @@ default, or you can set a different url template, and pull sounds from your own 
 - [audio-jsonp.js](http://mohayonao.github.io/timbre.js/src/extras/audio-jsonp.js) - (If your soundfonts are on a different domain)
 
 
-## Usages
+## Usage
 
 ```html
 	<script src="jsmad.js"></script>
