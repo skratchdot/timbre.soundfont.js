@@ -153,7 +153,11 @@
 	// this can be overridden by end users
 	soundfont.onLoad = function () {};
 
-	if (timbre && timbre.modules && timbre.modules.Decoder && timbre.modules.Decoder.mp3_decode) {
+	if (timbre &&
+		timbre.modules &&
+		timbre.modules.Decoder &&
+		timbre.modules.Decoder.mp3_decode &&
+		timbre.envtype === 'browser') {
 		timbre.soundfont = soundfont;
 	}
 }());
