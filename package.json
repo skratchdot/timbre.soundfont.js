@@ -1,7 +1,7 @@
 {
 	"name": "timbre.soundfont",
 	"description": "Play soundfont urls using timbre.js",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"homepage": "http://skratchdot.com/projects/timbre.soundfont.js/",
 	"author": {
 		"name": "skratchdot",
